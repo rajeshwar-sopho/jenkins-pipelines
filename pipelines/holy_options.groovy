@@ -16,11 +16,14 @@ pipeline {
     stages {
         stage('Init') {
             steps {
-                wrap([$class: 'AnsiColorBuildWrapper', 'colorMapName': 'xterm']) {
-                    sh 'echo -e "\\e[32mPipeline started...\\e[0m"'
-                    echo "Running on agent: ${env.NODE_NAME}"
-                    echo "Message: ${env.GREETING}, build #${env.BUILD_NUMBER_STR}"
-                    echo "Selected ENV: ${params.ENV}"
+                sh 'echo -e "\\e[32mPipeline started...\\e[0m"'
+                echo "Running on agent: ${env.NODE_NAME}"
+                echo "Message: ${env.GREETING}, build #${env.BUILD_NUMBER_STR}"
+                echo "Selected ENV: ${params.ENV}"
+
+                ansiColor('xterm') {
+                    sh 'printf "\\033[32mThis is green text.\\033[0m"'
+                    sh 'printf "\\033[31mThis is red text.\\033[0m"'
                 }
             }
         }
