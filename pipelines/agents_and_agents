@@ -20,6 +20,9 @@ pipeline {
             agent {
                 label 'built-in'
             }
+            options {
+                timeout(time: 15, unit: 'SECONDS')
+            }
             steps {
                 echo "Running on agent: ${env.NODE_NAME}"
             }
