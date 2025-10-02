@@ -16,17 +16,18 @@ pipeline {
                 echo "Running on agent: ${env.NODE_NAME}"
             }
         }
-        stage('Built-in Agent Stage') {
-            agent {
-                label 'built-in'
-            }
-            options {
-                timeout(time: 15, unit: 'SECONDS')
-            }
-            steps {
-                echo "Running on agent: ${env.NODE_NAME}"
-            }
-        }
+        // this stage does not work as using Built-in agent does not seem to be supported in Jenkins 
+        // stage('Built-in Agent Stage') {
+        //     agent {
+        //         label 'built-in'
+        //     }
+        //     options {
+        //         timeout(time: 15, unit: 'SECONDS')
+        //     }
+        //     steps {
+        //         echo "Running on agent: ${env.NODE_NAME}"
+        //     }
+        // }
         stage('Docker Agent Stage') {
             agent {
                 docker {
