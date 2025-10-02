@@ -33,7 +33,7 @@ pipeline {
                 docker {
                     image 'alpine:latest'
                     args '-v /var/run/docker.sock:/var/run/docker.sock'
-                    label 'my-defined-label-1'
+                    label 'test-agent' // Specify a label if needed
                 }
             }
             steps {
@@ -46,7 +46,7 @@ pipeline {
                 dockerfile {
                     filename 'Dockerfile'
                     dir 'build'
-                    label 'my-defined-label-2'
+                    // label 'my-defined-label-2' if label is not specified, it will use the default agent
                     additionalBuildArgs '--build-arg version=1.0.2'
                 }
             }
