@@ -1,0 +1,46 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Build') {
+            steps {
+                echo "Building..."
+                // Example failure to test behavior
+                // sh 'exit 1'
+            }
+        }
+
+        stage('Test') {
+            steps {
+                echo "Running tests..."
+            }
+        }
+    }
+
+    post {
+        always {
+            echo "This runs no matter what (always)."
+        }
+        changed {
+            echo "This runs only if the pipeline result has changed from previous run (changed)."
+        }
+        success {
+            echo "This runs only if the pipeline succeeds (success)."
+        }
+        failure {
+            echo "This runs only if the pipeline fails (failure)."
+        }
+        unstable {
+            echo "This runs only if the pipeline is marked unstable (unstable)."
+        }
+        aborted {
+            echo "This runs only if the pipeline is aborted (aborted)."
+        }
+        regression {
+            echo "This runs if the current run is worse than the previous run (regression)."
+        }
+        fixed {
+            echo "This runs if the current run fixes a previous failure/unstable (fixed)."
+        }
+    }
+}
