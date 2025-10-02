@@ -21,12 +21,14 @@ pipeline {
         stage('Load Env') {
             steps {
                 script {
+                    ls
+                    pwd
                     // Use selected environment from parameters
                     loadYamlEnv('config/config.yaml', params.ENVIRONMENT)
                 }
             }
         }
-        
+
         stage('Use Env') {
             steps {
                 echo "DB_HOST=${env.DB_HOST}"
