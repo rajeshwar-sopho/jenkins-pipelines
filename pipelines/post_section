@@ -6,7 +6,7 @@ pipeline {
             steps {
                 echo "Building..."
                 // Example failure to test behavior
-                // sh 'exit 1'
+                sh 'exit 1'
             }
         }
 
