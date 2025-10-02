@@ -15,7 +15,7 @@ pipeline {
             steps {
                 script {
                     // Use selected environment from parameters
-                    loadYamlEnv('config.yaml', params.ENVIRONMENT)
+                    loadYamlEnv('config/config.yaml', params.ENVIRONMENT)
                 }
             }
         }
