@@ -20,9 +20,9 @@ pipeline {
 
         stage('Load Env') {
             steps {
+                sh "ls"
+                sh "pwd"
                 script {
-                    ls
-                    pwd
                     // Use selected environment from parameters
                     loadYamlEnv('config/config.yaml', params.ENVIRONMENT)
                 }
