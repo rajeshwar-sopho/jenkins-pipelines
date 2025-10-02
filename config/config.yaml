@@ -1,0 +1,11 @@
+dev:
+  DB_HOST: dev.db.local
+  API_KEY: dev123
+
+qa:
+  DB_HOST: qa.db.local
+  API_KEY: qa456
+
+prod:
+  DB_HOST: prod.db.local
+  API_KEY: prod789
