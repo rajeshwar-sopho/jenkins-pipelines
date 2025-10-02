@@ -11,15 +11,17 @@ pipeline {
         buildDiscarder(logRotator(numToKeepStr: '5')) // keep last 5 builds
         disableConcurrentBuilds()           // avoid parallel runs
         skipDefaultCheckout()               // don’t auto-checkout SCM
-        ansiColor('xterm')                  // enable ANSI colors
     }
 
     stages {
         stage('Init') {
             steps {
-                echo "Running on agent: ${env.NODE_NAME}"
-                echo "Message: ${env.GREETING}, build #${env.BUILD_NUMBER_STR}"
-                echo "Selected ENV: ${params.ENV}"
+                wrap([$class: 'AnsiColorBuildWrapper', 'colorMapName': 'xterm']) {
+                    sh 'echo -e "\\e[32mPipeline started...\\e[0m"'
+                    echo "Running on agent: ${env.NODE_NAME}"
+                    echo "Message: ${env.GREETING}, build #${env.BUILD_NUMBER_STR}"
+                    echo "Selected ENV: ${params.ENV}"
+                }
             }
         }
 
