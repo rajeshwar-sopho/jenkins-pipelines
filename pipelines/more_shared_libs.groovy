@@ -24,7 +24,7 @@ pipeline {
                 sh "pwd"
                 script {
                     // Use selected environment from parameters
-                    loadYamlEnv('config/config.yaml', params.ENVIRONMENT)
+                    loadYamlEnv('./config/config.yaml', params.ENVIRONMENT)
                 }
             }
         }
