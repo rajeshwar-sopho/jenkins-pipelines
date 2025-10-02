@@ -11,6 +11,13 @@ pipeline {
     }
 
     stages {
+        stage('Checkout') {
+            steps {
+                // Checkout the repository so the config file is available
+                checkout scm
+            }
+        }
+
         stage('Load Env') {
             steps {
                 script {
@@ -19,6 +26,7 @@ pipeline {
                 }
             }
         }
+        
         stage('Use Env') {
             steps {
                 echo "DB_HOST=${env.DB_HOST}"
